@@ -43,7 +43,7 @@ Para clonar este proyecto desde GitHub, sigue los siguientes pasos:
   npm run dev
 ```
 
-5. ¡Listo! Ahora puedes comenzar a utilizar el proyecto siguiendo las instrucciones en la sección de [Uso](#uso).
+6. ¡Listo! Ahora puedes comenzar a utilizar el proyecto siguiendo las instrucciones en la sección de [Uso](#uso).
 
 Recuerda que debes tener instalado Git y Node.js en tu sistema antes de realizar estos pasos.
 
