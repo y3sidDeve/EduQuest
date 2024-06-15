@@ -1,8 +1,57 @@
-# React + Vite
+# Nombre del Proyecto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Este proyecto es en contraparte, el frontend de la aplicacion de tutorias en linea propuesta en el bootcamp de desarrollo talento tech
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tabla de Contenidos
+
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Funcionalidades](#funcionalidades)
+- [Contribución](#contribución)
+- [Licencia](#licencia)
+
+## Instalación Local
+
+Para clonar este proyecto desde GitHub, sigue los siguientes pasos:
+
+1. Abre tu terminal y navega hasta la carpeta donde deseas clonar el proyecto.
+2. Ejecuta el siguiente comando:
+
+   ```
+   git clone https://github.com/tu-usuario/tu-repositorio.git
+   ```
+
+   Asegúrate de reemplazar `tu-usuario` y `tu-repositorio` con tu nombre de usuario y el nombre de tu repositorio en GitHub.
+
+3. Una vez que se haya completado la clonación, navega hasta la carpeta del proyecto:
+
+   ```
+   cd tutoria_edu
+   ```
+
+4. Instala las dependencias del proyecto ejecutando el siguiente comando:
+
+   ```
+   npm install
+   ```
+
+   Esto instalará todas las bibliotecas y dependencias necesarias para ejecutar el proyecto.
+
+5. Start the server
+
+```bash
+  npm run dev
+```
+
+5. ¡Listo! Ahora puedes comenzar a utilizar el proyecto siguiendo las instrucciones en la sección de [Uso](#uso).
+
+Recuerda que debes tener instalado Git y Node.js en tu sistema antes de realizar estos pasos.
+
+## Bibliotecas/Frameworks Utilizados
+
+- tailwindCSS
+- React.js
+- NextUI
+- react router dom
