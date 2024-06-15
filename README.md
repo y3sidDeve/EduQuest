@@ -20,10 +20,8 @@ Para clonar este proyecto desde GitHub, sigue los siguientes pasos:
 2. Ejecuta el siguiente comando:
 
    ```
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/y3sidDeve/EduQuest.git
    ```
-
-   Asegúrate de reemplazar `tu-usuario` y `tu-repositorio` con tu nombre de usuario y el nombre de tu repositorio en GitHub.
 
 3. Una vez que se haya completado la clonación, navega hasta la carpeta del proyecto:
 
