@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "../components/common/Navbar";
 import smartImg from "../assets/images/smartphone_ilu.svg";
-import studyImg from "../assets/images/study_ilu.svg";
+import GroupCards from "../components/common/GroupCards";
+
+import { dataCards } from "../data/data";
 
 import { Button } from "@nextui-org/react";
 
@@ -31,6 +33,12 @@ const Home = () => {
 
           <div className="text-center flex justify-center lg:text-right mt-11">
             <img src={smartImg} alt="smartphone" />
+          </div>
+        </div>
+
+        <div className="mt-40 container mx-auto flex justify-center">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+            <GroupCards dataCards={dataCards} />
           </div>
         </div>
       </div>

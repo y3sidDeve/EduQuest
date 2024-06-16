@@ -20,8 +20,8 @@ function NavbarCustom() {
 
   return (
     <Navbar
-      isBlurred={false}
-      className="fixed bg-transparent text-white dark"
+      isBlurred={true}
+      className="fixed dark text-foreground"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
