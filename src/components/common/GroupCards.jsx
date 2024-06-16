@@ -18,6 +18,7 @@ const GroupCards = (props) => {
               isBordered
               radius="full"
               size="md"
+              src={card.user.profileImage}
             />
             <div className="flex flex-col gap-1 items-start justify-center">
               <h4 className="text-small font-semibold leading-none text-default-600">
@@ -29,16 +30,13 @@ const GroupCards = (props) => {
             </div>
           </CardHeader>
           <CardBody className="px-3 py-0 text-small text-default-400">
-            <p>
-              {card.title}
-            </p>
-            <span className="pt-2">
-                {card.text}
-            </span>
+            <span className="pt-2">{card.text}</span>
           </CardBody>
 
-          <CardFooter>
-            {card.alt}
+          <CardFooter className="gap-3">
+            <div className="flex gap-1">
+              <p className="text-default-400 text-small"> {card.date} </p>
+            </div>
           </CardFooter>
         </Card>
       ))}
