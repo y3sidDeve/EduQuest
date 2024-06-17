@@ -1,43 +1,51 @@
 import React from "react";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Avatar,
-  Button,
-} from "@nextui-org/react";
+import { Card, CardBody, Image } from "@nextui-org/react";
+
 const GroupCards = (props) => {
   return (
     <>
       {props.dataCards.map((card, index) => (
-        <Card key={index} shadow className="w-[300px] light mb-3">
-          <CardHeader className="flex gap-5">
-            <Avatar
-              isBordered
-              radius="full"
-              size="md"
-              src={card.user.profileImage}
-            />
-            <div className="flex flex-col gap-1 items-start justify-center">
-              <h4 className="text-small font-semibold leading-none text-default-600">
-                {card.user.name}
-              </h4>
-              <h5 className="text-small tracking-tight text-default-400">
-                {card.user.studyClass}
-              </h5>
-            </div>
-          </CardHeader>
-          <CardBody className="px-3 py-0 text-small text-default-400">
-            <span className="pt-2">{card.text}</span>
-          </CardBody>
+        <Card
+          key={index}
+          className="border-none bg-background/60 light max-w-[610px]"
+          shadow="sm"
+          isFooterBlurred
+        >
+          <CardBody>
+            <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
+              <div className="flex justify-center col-span-6 md:col-span-4">
+                <Image
+                  alt="Album cover"
+                  className="object-cover hidden md:block"
+                  height={200}
+                  src="https://via.placeholder.com/150"
+                  width="80%"
+                  radius="full"
+                />
+              </div>
 
-          <CardFooter className="gap-3">
-            <div className="flex gap-1">
-              <p className="text-default-400 text-small"> {card.date} </p>
+              <div className="flex flex-col col-span-6 md:col-span-8">
+                <div className="flex justify-between items-start">
+                  <div className="flex flex-col gap-0">
+                    <h3 className="font-semibold text-foreground/90">
+                      {" "}
+                      {card.user.name}{" "}
+                    </h3>
+                    <p className="text-small text-foreground/50">
+                      {" "}
+                      {card.user.studyClass}{" "}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col mt-3 gap-1">
+                  <p className="text-foreground/80"> {card.text} </p>
+                  <p className="text-sm text-foreground/25"> {card.date} </p>
+                </div>
+              </div>
             </div>
-          </CardFooter>
+          </CardBody>
         </Card>
       ))}
     </>

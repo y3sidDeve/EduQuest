@@ -2,10 +2,12 @@ import React from "react";
 import Navbar from "../components/common/Navbar";
 import smartImg from "../assets/images/smartphone_ilu.svg";
 import GroupCards from "../components/common/GroupCards";
+import { ArrowRight } from "../icons/Icons";  
 
 import { dataCards } from "../data/data";
 
 import { Button } from "@nextui-org/react";
+import Footer from "../components/common/Footer";
 
 const Home = () => {
   return (
@@ -27,18 +29,7 @@ const Home = () => {
 
               <Button color="danger" size="lg">
                 Empieza ahora
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="size-6"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
+                <ArrowRight />
               </Button>
             </div>
           </div>
@@ -48,11 +39,12 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="mt-40 container mx-auto flex justify-center">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+        <div className=" m-32 container mx-auto flex justify-center">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
             <GroupCards dataCards={dataCards} />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
