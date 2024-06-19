@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "../components/common/Navbar";
 import smartImg from "../assets/images/smartphone_ilu.svg";
 import GroupCards from "../components/common/GroupCards";
-import { ArrowRight } from "../icons/Icons";  
+import { ArrowRight } from "../icons/Icons";
 
 import { dataCards } from "../data/data";
+import { Link } from "react-router-dom";
 
 import { Button } from "@nextui-org/react";
 import Footer from "../components/common/Footer";
@@ -27,10 +28,12 @@ const Home = () => {
                 Tutorial
               </Button>
 
-              <Button color="danger" size="lg">
-                Empieza ahora
-                <ArrowRight />
-              </Button>
+              <Link to="register/" >
+                <Button color="danger" size="lg">
+                  Empieza ahora
+                  <ArrowRight />
+                </Button>
+              </Link>
             </div>
           </div>
 
