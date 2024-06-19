@@ -8,12 +8,10 @@ import {
   Link,
 } from "@nextui-org/react";
 
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 const Register = () => {
-  const [selected, setSelected] = React.useState("femenino");
-
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control } = useForm();
 
   const onSubmitCustom = handleSubmit((data) => {
     console.log(data);
@@ -76,20 +74,25 @@ const Register = () => {
               />
             </div>
 
-            <RadioGroup
-              label="Seleccciona tu género"
-              orientation="horizontal"
-              color="secondary"
-              className="mb-8"
-              value={selected}
-              onValueChange={setSelected}
-              {...register("gender")}
-            >
-              <Radio value="femenino">Femenino</Radio>
-              <Radio value="masculino">Masculino</Radio>
-              <Radio value="n/a">Prefiero no decirlo</Radio>
-            </RadioGroup>
-            {selected}
+            <Controller
+              name="gender"
+              control={control}
+              defaultValue="femenino"
+              rules={{ required: true }}
+              render={({ field }) => (
+                <RadioGroup
+                  label="Selecciona tu género"
+                  orientation="horizontal"
+                  color="secondary"
+                  className="mb-8"
+                  {...field}
+                >
+                  <Radio value="femenino">Femenino</Radio>
+                  <Radio value="masculino">Masculino</Radio>
+                  <Radio value="n/a">Prefiero no decirlo</Radio>
+                </RadioGroup>
+              )}
+            />
 
             <Input
               size="sm"
