@@ -8,16 +8,19 @@ import {
   Link,
 } from "@nextui-org/react";
 
+import InputPsw from "../components/common/InputPsw";
+
 import { useForm, Controller } from "react-hook-form";
 
 const Register = () => {
+  const [passwordMatch, setPasswordMatch] = React.useState(false);
+
   const { register, handleSubmit, control } = useForm();
 
   const onSubmitCustom = handleSubmit((data) => {
     console.log(data);
-
     data.passwordConfirm === data.password
-      ? alert("Registro exitoso")
+      ? alert("Contraseña correcta")
       : alert("Las contraseñas no coinciden");
   });
 
@@ -38,12 +41,14 @@ const Register = () => {
           >
             <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
               <Input
+                isRequired
                 size="sm"
                 label="Nombre"
                 type="text"
                 {...register("name", { required: true })}
               />
               <Input
+                isRequired
                 size="sm"
                 label="Apellido"
                 type="text"
@@ -51,6 +56,7 @@ const Register = () => {
               />
             </div>
             <Input
+              isRequired
               size="sm"
               label="Correo electrónico"
               type="email"
@@ -94,14 +100,14 @@ const Register = () => {
               )}
             />
 
-            <Input
+            <InputPsw
               size="sm"
               label="Contraseña"
               type="password"
-              className="mb-4"
+              className="mb-8"
               {...register("password", { required: true })}
             />
-            <Input
+            <InputPsw
               size="sm"
               label="Confirmar contraseña"
               type="password"
@@ -115,19 +121,19 @@ const Register = () => {
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta?{" "}
-              <Link color="secondary" href="#">
+              <Link className="font-semibold" color="secondary" href="#">
                 Inicia sesión
               </Link>
             </p>
 
             <p className="text-center mt-4 text-foreground/50">
               Al registrarte, aceptas nuestros{" "}
-              <Link color="secondary" href="#">
-                términos y condiciones
+              <Link  className="font-semibold" color="secondary" href="#">
+                Términos y condiciones
               </Link>{" "}
               y{" "}
-              <Link color="secondary" href="#">
-                política de privacidad
+              <Link className="font-semibold" color="secondary" href="#">
+                Política de privacidad
               </Link>
             </p>
           </form>
