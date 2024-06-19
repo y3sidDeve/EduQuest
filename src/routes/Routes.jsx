@@ -8,12 +8,12 @@ const routes = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/about",
-    element: <div>pagina About</div>,
-  },
-  {
     path: "/register",
     element:  <Register />,
+  },
+  {
+    path: "/login",
+    element: <div>login</div>,
   }
 ]);
 

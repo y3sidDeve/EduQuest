@@ -32,7 +32,13 @@ const Register = () => {
             Regístrate
           </h1>
           <p className="text-center text-foreground/50 mb-6">
-            Y comienza a disfrutar de los beneficios de EduQuest.com
+            Y comienza a disfrutar de los beneficios de
+            <Link>
+              <span className="font-semibold text-purple-950">
+                {" "}
+                EduQuest.com
+              </span>
+            </Link>
           </p>
           <form
             onSubmit={onSubmitCustom}
@@ -101,6 +107,7 @@ const Register = () => {
             />
 
             <InputPsw
+              
               size="sm"
               label="Contraseña"
               type="password"
@@ -108,6 +115,7 @@ const Register = () => {
               {...register("password", { required: true })}
             />
             <InputPsw
+            
               size="sm"
               label="Confirmar contraseña"
               type="password"
@@ -128,7 +136,7 @@ const Register = () => {
 
             <p className="text-center mt-4 text-foreground/50">
               Al registrarte, aceptas nuestros{" "}
-              <Link  className="font-semibold" color="secondary" href="#">
+              <Link className="font-semibold" color="secondary" href="#">
                 Términos y condiciones
               </Link>{" "}
               y{" "}
