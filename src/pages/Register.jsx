@@ -1,8 +1,26 @@
 import React from "react";
-import { Input, Button, ButtonGroup, RadioGroup, Radio, Link } from "@nextui-org/react";
+import {
+  Input,
+  Button,
+  ButtonGroup,
+  RadioGroup,
+  Radio,
+  Link,
+} from "@nextui-org/react";
+
+import { useForm, Controller } from "react-hook-form";
 
 const Register = () => {
-  const [selected, setSelected] = React.useState("femenino");
+  const { register, handleSubmit, control } = useForm();
+
+  const onSubmitCustom = handleSubmit((data) => {
+    console.log(data);
+
+    data.passwordConfirm === data.password
+      ? alert("Registro exitoso")
+      : alert("Las contraseñas no coinciden");
+  });
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
@@ -13,73 +31,104 @@ const Register = () => {
           <p className="text-center text-foreground/50 mb-6">
             Y comienza a disfrutar de los beneficios de EduQuest.com
           </p>
-          <form className="p-6 lg:p-0 lg:w-[55%]" action="">
+          <form
+            onSubmit={onSubmitCustom}
+            className="p-6 lg:p-0 lg:w-[55%]"
+            action=""
+          >
             <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
-              <Input size="sm" label="Nombre" type="text" />
-              <Input size="sm" label="Apellido" type="text" />
+              <Input
+                size="sm"
+                label="Nombre"
+                type="text"
+                {...register("name", { required: true })}
+              />
+              <Input
+                size="sm"
+                label="Apellido"
+                type="text"
+                {...register("lastname", { required: true })}
+              />
             </div>
             <Input
               size="sm"
               label="Correo electrónico"
               type="email"
               className="mb-4"
+              {...register("email", { required: true })}
             />
             <div className="flex w-full gap-4 flex-wrap md:flex-nowrap mb-4">
-              <Input size="sm" label="Teléfono" type="tel" className="mb-4" />
+              <Input
+                size="sm"
+                label="Teléfono"
+                type="tel"
+                className="mb-4"
+                {...register("phone", { required: true })}
+              />
               <Input
                 size="sm"
                 label="Fecha de nacimiento"
                 type="date"
                 className="mb-4"
+                {...register("date", { required: true })}
               />
             </div>
 
-            <RadioGroup
-              label="Seleccciona tu género"
-              value={selected}
-              onValueChange={setSelected}
-              orientation="horizontal"
-              color="secondary"
-              className="mb-8"
-            >
-              <Radio value="femenino">Femenino</Radio>
-              <Radio value="masculino">Masculino</Radio>
-              <Radio value="n/a">Prefiero no decirlo</Radio>
-            </RadioGroup>
+            <Controller
+              name="gender"
+              control={control}
+              defaultValue="femenino"
+              rules={{ required: true }}
+              render={({ field }) => (
+                <RadioGroup
+                  label="Selecciona tu género"
+                  orientation="horizontal"
+                  color="secondary"
+                  className="mb-8"
+                  {...field}
+                >
+                  <Radio value="femenino">Femenino</Radio>
+                  <Radio value="masculino">Masculino</Radio>
+                  <Radio value="n/a">Prefiero no decirlo</Radio>
+                </RadioGroup>
+              )}
+            />
 
             <Input
               size="sm"
               label="Contraseña"
               type="password"
               className="mb-4"
+              {...register("password", { required: true })}
             />
             <Input
               size="sm"
               label="Confirmar contraseña"
               type="password"
               className="mb-4"
+              {...register("passwordConfirm", { required: true })}
             />
 
-            <Button color="secondary" fullWidth radius="sm">
+            <Button type="submit" color="secondary" fullWidth radius="sm">
               Registrarse
             </Button>
 
             <p className="text-center mt-4">
-                ¿Ya tienes una cuenta?{" "}
-                <Link color="secondary" href="#">
-                  Inicia sesión
-                </Link>
+              ¿Ya tienes una cuenta?{" "}
+              <Link color="secondary" href="#">
+                Inicia sesión
+              </Link>
             </p>
 
             <p className="text-center mt-4 text-foreground/50">
-                Al registrarte, aceptas nuestros{" "}
-                <Link color="secondary" href="#">
-                    términos y condiciones
-                </Link>{" "}
-                y{" "}
-                <Link color="secondary" href="#">
-                    política de privacidad
-                </Link>
+              Al registrarte, aceptas nuestros{" "}
+              <Link color="secondary" href="#">
+                términos y condiciones
+              </Link>{" "}
+              y{" "}
+              <Link color="secondary" href="#">
+                política de privacidad
+              </Link>
             </p>
           </form>
         </div>
@@ -93,7 +142,9 @@ const Register = () => {
               <Button isDisabled color="success" variant="flat">
                 Tutorial
               </Button>
-              <Button isDisabled color="success">Empieza ahora</Button>
+              <Button isDisabled color="success">
+                Empieza ahora
+              </Button>
             </ButtonGroup>
           </div>
         </div>
