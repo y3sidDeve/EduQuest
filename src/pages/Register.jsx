@@ -10,18 +10,21 @@ import {
 
 import InputPsw from "../components/common/InputPsw";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 
 const Register = () => {
-  const [passwordMatch, setPasswordMatch] = React.useState(false);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
-  const { register, handleSubmit, control } = useForm();
+  const password = useWatch({ name: "password", control });
+  const passwordConfirm = useWatch({ name: "passwordConfirm", control });
 
   const onSubmitCustom = handleSubmit((data) => {
     console.log(data);
-    data.passwordConfirm === data.password
-      ? alert("Contraseña correcta")
-      : alert("Las contraseñas no coinciden");
   });
 
   return (
@@ -32,8 +35,8 @@ const Register = () => {
             Regístrate
           </h1>
           <p className="text-center text-foreground/50 mb-6">
-            Y comienza a disfrutar de los beneficios de
-            <Link>
+            Y comienza a disfrutar de los beneficios de{" "}
+            <Link href="/">
               <span className="font-semibold text-purple-950">
                 {" "}
                 EduQuest.com
@@ -107,23 +110,46 @@ const Register = () => {
             />
 
             <InputPsw
-              
               size="sm"
               label="Contraseña"
               type="password"
               className="mb-8"
-              {...register("password", { required: true })}
+              {...register("password", { required: true, minLength: 6 })}
             />
+
             <InputPsw
-            
               size="sm"
               label="Confirmar contraseña"
               type="password"
               className="mb-4"
-              {...register("passwordConfirm", { required: true })}
+              {...register("passwordConfirm", {
+                required: true,
+                minLength: 6,
+                validate: (value) =>
+                  value === password || "Las contraseñas no coinciden",
+              })}
             />
 
-            <Button type="submit" color="secondary" fullWidth radius="sm">
+            {errors.password ? (
+              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                La contraseña debe tener al menos 6 caracteres
+              </span>
+            ) : (
+              errors.passwordConfirm && (
+                <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                  {errors.passwordConfirm.message}
+                </span>
+              ) 
+              
+            )}
+
+            <Button
+              className="mt-1"
+              type="submit"
+              color="secondary"
+              fullWidth
+              radius="sm"
+            >
               Registrarse
             </Button>
 
