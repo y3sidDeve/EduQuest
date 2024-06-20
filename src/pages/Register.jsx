@@ -9,6 +9,7 @@ import {
 } from "@nextui-org/react";
 
 import InputPsw from "../components/common/InputPsw";
+import ModalForm from "../components/specific/ModalForm";
 
 import { useForm, Controller, useWatch } from "react-hook-form";
 
@@ -139,11 +140,10 @@ const Register = () => {
                 <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
                   {errors.passwordConfirm.message}
                 </span>
-              ) 
-              
+              )
             )}
 
-            <Button
+            {/* <Button
               className="mt-1"
               type="submit"
               color="secondary"
@@ -151,7 +151,10 @@ const Register = () => {
               radius="sm"
             >
               Registrarse
-            </Button>
+            </Button> */}
+
+            {/* ESPACIO PARA EL MODAL */}
+            <ModalForm />
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta?{" "}
