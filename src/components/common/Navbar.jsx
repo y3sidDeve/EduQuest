@@ -59,9 +59,9 @@ function NavbarCustom() {
         </NavbarItem>
 
         <NavbarItem>
-          <NextUILink color="foreground" href="#">
+          <RouterLink color="foreground" className=" hover:text-teal-500  transition-transform-colors" to="register-tutor/">
             Quiero ser tutor
-          </NextUILink>
+          </RouterLink>
         </NavbarItem>
 
         <NavbarItem>

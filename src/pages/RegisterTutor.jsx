@@ -4,19 +4,14 @@ import {
   Button,
   RadioGroup,
   Radio,
+  Link,
 } from "@nextui-org/react";
 
 import InputPsw from "../components/common/InputPsw";
-import { createStudent } from "../services/user_api";
-
-import { Link as RouterLink } from "react-router-dom";
-import { Link as NextUILink } from "@nextui-org/react";
-
-
 
 import { useForm, Controller, useWatch } from "react-hook-form";
 
-const Register = () => {
+const RegisterTutor = () => {
   const {
     register,
     handleSubmit,
@@ -25,54 +20,51 @@ const Register = () => {
   } = useForm();
 
   const password = useWatch({ name: "password", control });
- 
+  const passwordConfirm = useWatch({ name: "passwordConfirm", control });
 
   const onSubmitCustom = handleSubmit((data) => {
-
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-    
-    createStudent(data)
+    console.log(data);
   });
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
         <div className="flex justify-center flex-col items-center light text-foreground py-11 lg:pt-0">
-          <h1 className="text-5xl font-bold mb-3 text-purple-950">
-            Regístrate
+          <h1 className="text-5xl font-bold mb-3 text-teal-900">
+            Enseña y aprende
           </h1>
           <p className="text-center text-foreground/50 mb-6">
-            Y comienza a disfrutar de los beneficios de{" "}
-            <RouterLink>
-              <span className="font-semibold text-purple-500">
-                {" "}
-                EduQuest.com
-              </span>
-            </RouterLink>
+            comparte tus conocimientos en{" "}
+            <Link href="/">
+              <span className="font-semibold text-teal-700"> EduQuest.com</span>
+            </Link>
           </p>
           <form
             onSubmit={onSubmitCustom}
             className="p-6 lg:p-0 lg:w-[55%]"
             action=""
           >
-            <Input type="hidden" value={3}
-            {...register("rol", { required: true })}
-             />
+            <Input
+              type="hidden"
+              value={2}
+              {...register("rol", { required: true })}
+            />
             <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
               <Input
                 isRequired
                 size="sm"
                 label="Nombre"
                 type="text"
-                {...register("nombre", { required: true })}
+                {...register("name", { required: true })}
               />
               <Input
                 isRequired
                 size="sm"
                 label="Apellido"
                 type="text"
-                {...register("apellido", { required: true })}
+                {...register("lastname", { required: true })}
               />
             </div>
             <Input
@@ -89,7 +81,7 @@ const Register = () => {
                 label="Teléfono"
                 type="tel"
                 className="mb-4"
-                {...register("telefono", { required: true })}
+                {...register("phone", { required: true })}
               />
               <Input
                 size="sm"
@@ -101,7 +93,7 @@ const Register = () => {
             </div>
 
             <Controller
-              name="genero"
+              name="gender"
               control={control}
               defaultValue="femenino"
               rules={{ required: true }}
@@ -109,7 +101,7 @@ const Register = () => {
                 <RadioGroup
                   label="Selecciona tu género"
                   orientation="horizontal"
-                  color="secondary"
+                  color="success"
                   className="mb-8"
                   {...field}
                 >
@@ -123,7 +115,6 @@ const Register = () => {
             <InputPsw
               size="sm"
               label="Contraseña"
-              type="password"
               className="mb-8"
               {...register("password", { required: true, minLength: 6 })}
             />
@@ -131,7 +122,6 @@ const Register = () => {
             <InputPsw
               size="sm"
               label="Confirmar contraseña"
-              type="password"
               className="mb-4"
               {...register("passwordConfirm", {
                 required: true,
@@ -148,15 +138,14 @@ const Register = () => {
             ) : (
               errors.passwordConfirm && (
                 <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
-                  Las contraseñas no coinciden
+                  {errors.passwordConfirm.message}
                 </span>
               )
             )}
 
             <Button
-              className="mt-1"
+              className="mt-1 bg-teal-600 text-white"
               type="submit"
-              color="secondary"
               fullWidth
               radius="sm"
             >
@@ -164,33 +153,34 @@ const Register = () => {
             </Button>
 
             {/* ESPACIO PARA EL MODAL */}
-            
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta?{" "}
-              <RouterLink className="font-semibold text-purple-500" >
+              <Link className="font-semibold" color="success" href="#">
                 Inicia sesión
-              </RouterLink>
+              </Link>
             </p>
 
             <p className="text-center mt-4 text-foreground/50">
               Al registrarte, aceptas nuestros{" "}
-              <NextUILink className="font-semibold" color="secondary" href="#">
+              <Link className="font-semibold" color="success" href="#">
                 Términos y condiciones
-              </NextUILink>{" "}
+              </Link>{" "}
               y{" "}
-              <NextUILink className="font-semibold" color="secondary" href="#">
+              <Link className="font-semibold" color="success" href="#">
                 Política de privacidad
-              </NextUILink>
+              </Link>
             </p>
           </form>
         </div>
-        <div className="text-center md:text-left ilustration-register">
-          <h3 className="text-5xl p-4 font-bold">EduQuest.com</h3>
-          <div className="flex flex-col justify-center items-center mt-32">
-            <p className=" mt-4">
-              Aprende a tu ritmo, con los mejores tutores de la región.
-            </p>
+        <div className="text-center md:text-left ilustration-register2">
+          <h3 className="text-5xl p-4 mt-4 font-bold">EduQuest.com</h3>
+
+          <div className="container flex justify-center">
+            <h1 className=" font-sans text-lg">
+              Si te gusta enseñar y tienes conocimientos en alguna materia,
+              ¡Regístrate como tutor!
+            </h1>
           </div>
         </div>
       </div>
@@ -198,4 +188,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterTutor;

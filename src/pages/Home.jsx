@@ -28,7 +28,7 @@ const Home = () => {
                 Tutorial
               </Button>
 
-              <Link to="register/" >
+              <Link to="register-student/" >
                 <Button color="danger" size="lg">
                   Empieza ahora
                   <ArrowRight />

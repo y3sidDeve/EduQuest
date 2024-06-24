@@ -1,8 +1,11 @@
 import React from "react";
-import { Input, Button, ButtonGroup, RadioGroup, Radio, Link } from "@nextui-org/react";
+import { Input, Button } from "@nextui-org/react";
+import InputPsw from "../components/common/InputPsw";
+
+import { Link as RouterLink } from "react-router-dom";
+import { Link as NextUILink } from "@nextui-org/react";
 
 const Login = () => {
-  const [selected, setSelected] = React.useState("femenino");
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
@@ -14,7 +17,6 @@ const Login = () => {
             Aprende a tu ritmo
           </p>
           <form className="p-6 lg:p-0 lg:w-[55%]" action="">
-
             <Input
               size="sm"
               label="Correo electrónico"
@@ -22,8 +24,7 @@ const Login = () => {
               className="mb-4"
             />
 
-
-            <Input
+            <InputPsw
               size="sm"
               label="Contraseña"
               type="password"
@@ -35,21 +36,7 @@ const Login = () => {
             </Button>
 
             <p className="text-center mt-4">
-                ¿No tienes una cuenta?{" "}
-                <Link color="secondary" href="#">
-                  Registrate
-                </Link>
-            </p>
-
-            <p className="text-center mt-4 text-foreground/50">
-                Al iniciar sesión, aceptas nuestros{" "}
-                <Link color="secondary" href="#">
-                    términos y condiciones
-                </Link>{" "}
-                y{" "}
-                <Link color="secondary" href="#">
-                    política de privacidad
-                </Link>
+              ¿No tienes una cuenta? <RouterLink className="text-purple-600"  to="/register-student">Registrate</RouterLink>
             </p>
           </form>
         </div>
@@ -59,12 +46,6 @@ const Login = () => {
             <p className=" mt-4">
               Aprende a tu ritmo, con los mejores tutores de la región.
             </p>
-            <ButtonGroup className="mt-8">
-              <Button isDisabled color="success" variant="flat">
-                Tutorial
-              </Button>
-              <Button isDisabled color="success">Empieza ahora</Button>
-            </ButtonGroup>
           </div>
         </div>
       </div>

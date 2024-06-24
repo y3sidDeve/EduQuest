@@ -62,3 +62,29 @@
   filter: brightness(0.5);
   z-index: -1;
 }
+
+.ilustration-register2 {
+  position: relative;
+  overflow: hidden;
+  font-family: "Kanit", sans-serif;
+}
+
+.ilustration-register2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../images/homeOffice2.jpg) no-repeat center center;
+  background-size: cover;
+  filter: brightness(0.5);
+  z-index: -1;
+}
+
+.ilustration-register2 h1 {
+  font-size: x-large;
+  padding: 2rem;
+  text-align: center;
+}
+
