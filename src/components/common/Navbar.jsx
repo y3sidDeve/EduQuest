@@ -7,9 +7,11 @@ import {
   NavbarMenu,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
 } from "@nextui-org/react";
+
+import { Link as RouterLink } from "react-router-dom";
+import { Link as NextUILink } from "@nextui-org/react";
 
 import logo_white from "../../assets/images/logo_white.svg";
 import { ArrowLogIn } from "../../icons/Icons";
@@ -48,34 +50,41 @@ function NavbarCustom() {
         </NavbarBrand>
 
         <NavbarItem isActive>
-          <Link color="foreground">Inicio</Link>
+          <NextUILink color="foreground">Inicio</NextUILink>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <NextUILink color="foreground" href="#">
             Cursos
-          </Link>
+          </NextUILink>
         </NavbarItem>
 
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <NextUILink color="foreground" href="#">
             Quiero ser tutor
-          </Link>
+          </NextUILink>
         </NavbarItem>
 
         <NavbarItem>
-          <Button color="white" variant="ghost">
-            <ArrowLogIn />
-            Iniciar sesión
-          </Button>
+          <RouterLink to="login/">
+            <Button color="white" variant="ghost">
+              <ArrowLogIn />
+              Iniciar sesión
+            </Button>
+          </RouterLink>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link className="w-full" color="foreground" href="#" size="lg">
+            <NextUILink
+              className="w-full"
+              color="foreground"
+              href="#"
+              size="lg"
+            >
               {item}
-            </Link>
+            </NextUILink>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
