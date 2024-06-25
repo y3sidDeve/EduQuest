@@ -44,83 +44,163 @@ export const dataCards = [
 
 export const intereses = [
   {
-    id: 1,
-    name: "Matemáticas",
-  },
-  {
-    id: 2,
-    name: "Diseño Gráfico",
-  },
-  {
-    id: 3,
-    name: "Marketing Digital",
-  },
-  {
-    id: 4,
-    name: "Idiomas",
-  },
-  {
-    id: 5,
-    name: "Programación",
-  },
-  {
-    id: 6,
-    name: "Fotografía",
-  },
-  {
-    id: 7,
-    name: "Música",
-  },
-  {
-    id: 8,
-    name: "Cocina",
-  },
-  {
-    id: 9,
-    name: "Dibujo",
-  },
-  {
-    id: 10,
-    name: "Baile",
-  },
-  {
-    id: 11,
-    name: "Deportes",
-  },
-  {
-    id: 12,
-    name: "Manualidades",
-  },
-  {
-    id: 13,
-    name: "Cine",
-  },
-  {
-    id: 14,
-    name: "Teatro",
-  },
-  {
-    id: 15,
-    name: "Literatura",
-  },
-  {
-    id: 16,
-    name: "Historia",
-  },
+      id: 1,
+      name: "Ingeniero",
+    },
+    {
+      id: 2,
+      name: "Médico",
+    },
+    {
+      id: 3,
+      name: "Abogado",
+    },
+    {
+      id: 4,
+      name: "Arquitecto",
+    },
+    {
+      id: 5,
+      name: "Enfermero",
+    },
+    {
+      id: 6,
+      name: "Psicólogo",
+    },
+    {
+      id: 7,
+      name: "Educador",
+    },
+    {
+      id: 8,
+      name: "Periodista",
+    },
+    {
+      id: 9,
+      name: "Diseñador de Interiores",
+    },
+    {
+      id: 10,
+      name: "Especialista en Marketing",
+    },
+    {
+      id: 11,
+      name: "Especialista en Finanzas",
+    },
+    {
+      id: 12,
+      name: "Especialista en Recursos Humanos",
+    },
+    {
+      id: 13,
+      name: "Chef",
+    },
+    {
+      id: 14,
+      name: "Ingeniero Civil",
+    },
+    {
+      id: 15,
+      name: "Psiquiatra",
+    },
+    {
+      id: 16,
+      name: "Fisioterapeuta",
+    },
   {
     id: 17,
-    name: "Ciencia",
+    name: "Publicidad",
   },
   {
     id: 18,
-    name: "Tecnología",
+    name: "Veterinaria",
   },
   {
     id: 19,
-    name: "Economía",
+    name: "Contabilidad",
   },
   {
     id: 20,
-    name: "Negocios",
+    name: "Desarrollo de Software",
+  },
+  {
+    id: 21,
+    name: "Licenciatura en Ingeniería",
+  },
+  {
+    id: 22,
+    name: "Licenciatura en Medicina",
+  },
+  {
+    id: 23,
+    name: "Licenciatura en Derecho",
+  },
+  {
+    id: 24,
+    name: "Licenciatura en Arquitectura",
+  },
+  {
+    id: 25,
+    name: "Licenciatura en Enfermería",
+  },
+  {
+    id: 26,
+    name: "Licenciatura en Psicología",
+  },
+  {
+    id: 27,
+    name: "Licenciatura en Educación",
+  },
+  {
+    id: 28,
+    name: "Licenciatura en Periodismo",
+  },
+  {
+    id: 29,
+    name: "Licenciatura en Diseño de Interiores",
+  },
+  {
+    id: 30,
+    name: "Licenciatura en Marketing",
+  },
+  {
+    id: 31,
+    name: "Licenciatura en Finanzas",
+  },
+  {
+    id: 32,
+    name: "Licenciatura en Recursos Humanos",
+  },
+  {
+    id: 33,
+    name: "Licenciatura en Gastronomía",
+  },
+  {
+    id: 34,
+    name: "Licenciatura en Ingeniería Civil",
+  },
+  {
+    id: 35,
+    name: "Licenciatura en Psiquiatría",
+  },
+  {
+    id: 36,
+    name: "Licenciatura en Fisioterapia",
+  },
+  {
+    id: 37,
+    name: "Licenciatura en Publicidad",
+  },
+  {
+    id: 38,
+    name: "Licenciatura en Veterinaria",
+  },
+  {
+    id: 39,
+    name: "Licenciatura en Contabilidad",
+  },
+  {
+    id: 40,
+    name: "Licenciatura en Desarrollo de Software",
   },
 ];

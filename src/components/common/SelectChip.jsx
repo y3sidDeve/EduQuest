@@ -7,10 +7,9 @@ export default function SelectChip() {
   return (
     <Select
       items={intereses}
-      label="Intereses:"
-      isMultiline={true}
+      isMultiline
+      label="Profesion:"
       selectionMode="multiple"
-      labelPlacement="outside-left"
       renderValue={(selectedItems) => {
         return (
           <div className="flex flex-wrap gap-2">

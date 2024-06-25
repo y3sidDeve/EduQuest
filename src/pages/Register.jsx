@@ -1,18 +1,13 @@
 import React from "react";
-import {
-  Input,
-  Button,
-  RadioGroup,
-  Radio,
-} from "@nextui-org/react";
+import { Input, Button, RadioGroup, Radio } from "@nextui-org/react";
+
+import { useNavigate } from "react-router-dom";
 
 import InputPsw from "../components/common/InputPsw";
 import { createStudent } from "../services/user_api";
 
 import { Link as RouterLink } from "react-router-dom";
 import { Link as NextUILink } from "@nextui-org/react";
-
-
 
 import { useForm, Controller, useWatch } from "react-hook-form";
 
@@ -24,15 +19,18 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
+  const [response, setResponse] = React.useState(null);
+
   const password = useWatch({ name: "password", control });
- 
 
   const onSubmitCustom = handleSubmit((data) => {
-
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
     
     createStudent(data)
+      navigate("/login");
   });
 
   return (
@@ -44,7 +42,7 @@ const Register = () => {
           </h1>
           <p className="text-center text-foreground/50 mb-6">
             Y comienza a disfrutar de los beneficios de{" "}
-            <RouterLink>
+            <RouterLink to="/">
               <span className="font-semibold text-purple-500">
                 {" "}
                 EduQuest.com
@@ -56,9 +54,11 @@ const Register = () => {
             className="p-6 lg:p-0 lg:w-[55%]"
             action=""
           >
-            <Input type="hidden" value={3}
-            {...register("rol", { required: true })}
-             />
+            <Input
+              type="hidden"
+              value={3}
+              {...register("rol", { required: true })}
+            />
             <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
               <Input
                 isRequired
@@ -83,6 +83,12 @@ const Register = () => {
               className="mb-4"
               {...register("email", { required: true })}
             />
+
+            {response && (
+              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                {response.Mensaje}
+              </span>
+            )}
             <div className="flex w-full gap-4 flex-wrap md:flex-nowrap mb-4">
               <Input
                 size="sm"
@@ -96,7 +102,7 @@ const Register = () => {
                 label="Fecha de nacimiento"
                 type="date"
                 className="mb-4"
-                {...register("date", { required: true })}
+                {...register("fecha_nacimiento", { required: true })}
               />
             </div>
 
@@ -164,11 +170,10 @@ const Register = () => {
             </Button>
 
             {/* ESPACIO PARA EL MODAL */}
-            
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta?{" "}
-              <RouterLink className="font-semibold text-purple-500" >
+              <RouterLink to="/login" className="font-semibold text-purple-500">
                 Inicia sesión
               </RouterLink>
             </p>

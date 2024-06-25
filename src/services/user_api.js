@@ -1,11 +1,7 @@
 import axios from "axios";
 
 const userApi = axios.create({
-  baseURL: "http://localhost:8081/api/v1/user",
-});
-
-const userApiProduction = axios.create({
-  baseURL: "https://backend-platorma-tutorias-en-linea.onrender.com",
+  baseURL: "http://localhost:8080/api/v1/user",
 });
 
 
@@ -18,3 +14,15 @@ export const createStudent = async (user) => {
     console.error(error);
   }
 };
+
+
+// usuario de tipo tutor
+export const createTutor = async (user) => {
+  try {
+    const response = await userApi.post("/register/tutor", user);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+

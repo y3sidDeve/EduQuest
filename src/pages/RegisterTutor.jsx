@@ -1,15 +1,16 @@
 import React from "react";
-import {
-  Input,
-  Button,
-  RadioGroup,
-  Radio,
-  Link,
-} from "@nextui-org/react";
+import { Input, Button, RadioGroup, Radio } from "@nextui-org/react";
 
 import InputPsw from "../components/common/InputPsw";
+import SelectChip from "../components/common/SelectChip";
+
+import { Link as RouterLink } from "react-router-dom";
+import { Link as NextUILink, Textarea, Image } from "@nextui-org/react";
 
 import { useForm, Controller, useWatch } from "react-hook-form";
+
+import { createTutor } from "../services/user_api";
+import logo_white from "../assets/images/logo_white.svg";
 
 const RegisterTutor = () => {
   const {
@@ -20,26 +21,27 @@ const RegisterTutor = () => {
   } = useForm();
 
   const password = useWatch({ name: "password", control });
-  const passwordConfirm = useWatch({ name: "passwordConfirm", control });
 
   const onSubmitCustom = handleSubmit((data) => {
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-    console.log(data);
+
+    createTutor(data);
+    navigate("/login");
   });
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
         <div className="flex justify-center flex-col items-center light text-foreground py-11 lg:pt-0">
-          <h1 className="text-5xl font-bold mb-3 text-teal-900">
+          <h1 className=" text-5xl text-center font-bold my-3 text-teal-900">
             Enseña y aprende
           </h1>
           <p className="text-center text-foreground/50 mb-6">
             comparte tus conocimientos en{" "}
-            <Link href="/">
-              <span className="font-semibold text-teal-700"> EduQuest.com</span>
-            </Link>
+            <RouterLink to="/">
+              <span className="font-semibold text-teal-400"> EduQuest.com</span>
+            </RouterLink>
           </p>
           <form
             onSubmit={onSubmitCustom}
@@ -51,7 +53,7 @@ const RegisterTutor = () => {
               value={2}
               {...register("rol", { required: true })}
             />
-            <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
+            <div className="flex w-full flex-wrap md:flex-nowrap mb-1 md:mb-3 gap-4">
               <Input
                 isRequired
                 size="sm"
@@ -92,6 +94,8 @@ const RegisterTutor = () => {
               />
             </div>
 
+            <SelectChip />
+
             <Controller
               name="gender"
               control={control}
@@ -110,6 +114,13 @@ const RegisterTutor = () => {
                   <Radio value="n/a">Prefiero no decirlo</Radio>
                 </RadioGroup>
               )}
+            />
+
+            <Textarea
+              label="Descripción"
+              placeholder="Escribe una breve descripción sobre ti"
+              className=" mb-3"
+              
             />
 
             <InputPsw
@@ -155,26 +166,33 @@ const RegisterTutor = () => {
             {/* ESPACIO PARA EL MODAL */}
 
             <p className="text-center mt-4">
-              ¿Ya tienes una cuenta?{" "}
-              <Link className="font-semibold" color="success" href="#">
+              ¿Ya tienes una cuenta de Tutor?{" "}
+              <RouterLink className="font-semibold text-teal-400" to="/login">
                 Inicia sesión
-              </Link>
+              </RouterLink>
             </p>
 
             <p className="text-center mt-4 text-foreground/50">
               Al registrarte, aceptas nuestros{" "}
-              <Link className="font-semibold" color="success" href="#">
+              <NextUILink className="font-semibold text-teal-500" href="#">
                 Términos y condiciones
-              </Link>{" "}
+              </NextUILink>{" "}
               y{" "}
-              <Link className="font-semibold" color="success" href="#">
+              <NextUILink className="font-semibold text-teal-500" href="#">
                 Política de privacidad
-              </Link>
+              </NextUILink>
             </p>
           </form>
         </div>
         <div className="text-center md:text-left ilustration-register2">
-          <h3 className="text-5xl p-4 mt-4 font-bold">EduQuest.com</h3>
+          <div className="flex p-4 justify-between px-9">
+            <h3 className="text-5xl mt-4 font-bold">EduQuest.com</h3>
+            <Image
+              width={60}
+              alt="NextUI hero Image"
+              src={logo_white}
+            />
+          </div>
 
           <div className="container flex justify-center">
             <h1 className=" font-sans text-lg">
