@@ -38,10 +38,10 @@ const RegisterTutor = () => {
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
         <div className="flex justify-center flex-col items-center light text-foreground py-11 lg:pt-0">
-          <h1 className=" text-5xl text-center font-bold my-3 text-teal-900">
+          <h1 className=" text-4xl text-center font-bold my-3 text-teal-900">
             Enseña y aprende
           </h1>
-          <p className="text-center text-foreground/50 mb-6">
+          <p className="text-center text-sm text-foreground/50 mb-6">
             comparte tus conocimientos en{" "}
             <RouterLink to="/">
               <span className="font-semibold text-teal-400"> EduQuest.com</span>

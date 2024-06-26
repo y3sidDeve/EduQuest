@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
-        <div className="flex flex-col items-center p-5 lg:mt-36 light text-foreground">
+        <div className="flex flex-col items-center p-5 lg:p-0 lg:mt-36 light text-foreground">
           <div className="gap-2 pb-11 flex flex-col justify-center items-center">
             <Image src={logo_black} width={90} />
             <h1 className="text-2xl font-bold text-purple-600">
