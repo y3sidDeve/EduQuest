@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Register from "../pages/estudiante/Register";
 import Login from "../pages/estudiante/Login";
 import RegisterTutor from "../pages/tutor/RegisterTutor";
+import LoginTutor from "../pages/tutor/LoginTutor";
 
 const routes = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const routes = createBrowserRouter([
     path: "/register-tutor",
     element: <RegisterTutor />,
   },
+  {
+    path: "/login-tutor",
+    element: <LoginTutor />,
+  }
 ]);
 
 export default routes;
