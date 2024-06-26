@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
-import Register from "../pages/Register";
-import Login from "../pages/Login";
-import RegisterTutor from "../pages/RegisterTutor";
+import Register from "../pages/estudiante/Register";
+import Login from "../pages/estudiante/Login";
+import RegisterTutor from "../pages/tutor/RegisterTutor";
 
 const routes = createBrowserRouter([
   {

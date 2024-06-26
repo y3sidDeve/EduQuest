@@ -1,11 +1,11 @@
 import React from "react";
 import { Input, Button, Checkbox, Image } from "@nextui-org/react";
-import InputPsw from "../components/common/InputPsw";
+import InputPsw from "../../components/common/InputPsw";
 
 import { Link as RouterLink } from "react-router-dom";
-import logo_black from "../assets/images/logo_purple.svg";
+import logo_black from "../../assets/images/logo_purple.svg";
 
-import { ArrowRight } from "../icons/Icons";
+import { ArrowRight } from "../../icons/Icons";
 
 const Login = () => {
   document.title = "EduQuest | Iniciar sesión";

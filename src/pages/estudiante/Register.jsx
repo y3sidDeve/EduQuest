@@ -1,20 +1,17 @@
 import React from "react";
 import { Input, Button, RadioGroup, Radio } from "@nextui-org/react";
 
-import InputPsw from "../components/common/InputPsw";
-import SelectChip from "../components/common/SelectChip";
+import { useNavigate } from "react-router-dom";
+
+import InputPsw from "../../components/common/InputPsw";
+import { createStudent } from "../../services/user_api";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Link as NextUILink, Textarea, Image } from "@nextui-org/react";
+import { Link as NextUILink } from "@nextui-org/react";
 
 import { useForm, Controller, useWatch } from "react-hook-form";
 
-import { createTutor } from "../services/user_api";
-import logo_white from "../assets/images/logo_white.svg";
-
-import { useNavigate } from "react-router-dom";
-
-const RegisterTutor = () => {
+const Register = () => {
   const {
     register,
     handleSubmit,
@@ -24,27 +21,32 @@ const RegisterTutor = () => {
 
   const navigate = useNavigate();
 
+  const [response, setResponse] = React.useState(null);
+
   const password = useWatch({ name: "password", control });
 
   const onSubmitCustom = handleSubmit((data) => {
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-    console.log(data);
-    createTutor(data);
-    navigate("/");
+    
+    createStudent(data)
+      navigate("/login");
   });
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
         <div className="flex justify-center flex-col items-center light text-foreground py-11 lg:pt-0">
-          <h1 className=" text-4xl text-center font-bold my-3 text-teal-900">
-            Enseña y aprende
+          <h1 className="text-5xl font-bold mb-3 text-purple-950">
+            Regístrate
           </h1>
-          <p className="text-center text-sm text-foreground/50 mb-6">
-            comparte tus conocimientos en{" "}
+          <p className="text-center text-foreground/50 mb-6">
+            Y comienza a disfrutar de los beneficios de{" "}
             <RouterLink to="/">
-              <span className="font-semibold text-teal-400"> EduQuest.com</span>
+              <span className="font-semibold text-purple-500">
+                {" "}
+                EduQuest.com
+              </span>
             </RouterLink>
           </p>
           <form
@@ -54,10 +56,10 @@ const RegisterTutor = () => {
           >
             <Input
               type="hidden"
-              value={2}
+              value={3}
               {...register("rol", { required: true })}
             />
-            <div className="flex w-full flex-wrap md:flex-nowrap mb-1 md:mb-3 gap-4">
+            <div className="flex w-full flex-wrap md:flex-nowrap mb-4 md:mb-8 gap-4">
               <Input
                 isRequired
                 size="sm"
@@ -81,6 +83,12 @@ const RegisterTutor = () => {
               className="mb-4"
               {...register("email", { required: true })}
             />
+
+            {response && (
+              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                {response.Mensaje}
+              </span>
+            )}
             <div className="flex w-full gap-4 flex-wrap md:flex-nowrap mb-4">
               <Input
                 size="sm"
@@ -98,10 +106,8 @@ const RegisterTutor = () => {
               />
             </div>
 
-            <SelectChip />
-
             <Controller
-              name="gender"
+              name="genero"
               control={control}
               defaultValue="femenino"
               rules={{ required: true }}
@@ -109,7 +115,7 @@ const RegisterTutor = () => {
                 <RadioGroup
                   label="Selecciona tu género"
                   orientation="horizontal"
-                  color="success"
+                  color="secondary"
                   className="mb-8"
                   {...field}
                 >
@@ -120,17 +126,10 @@ const RegisterTutor = () => {
               )}
             />
 
-            <Textarea
-              label="Descripción"
-              placeholder="Escribe una breve descripción sobre ti"
-              className=" mb-3"
-              
-              
-            />
-
             <InputPsw
               size="sm"
               label="Contraseña"
+              type="password"
               className="mb-8"
               {...register("password", { required: true, minLength: 6 })}
             />
@@ -138,6 +137,7 @@ const RegisterTutor = () => {
             <InputPsw
               size="sm"
               label="Confirmar contraseña"
+              type="password"
               className="mb-4"
               {...register("passwordConfirm", {
                 required: true,
@@ -154,14 +154,15 @@ const RegisterTutor = () => {
             ) : (
               errors.passwordConfirm && (
                 <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
-                  {errors.passwordConfirm.message}
+                  Las contraseñas no coinciden
                 </span>
               )
             )}
 
             <Button
-              className="mt-1 bg-teal-600 text-white"
+              className="mt-1"
               type="submit"
+              color="secondary"
               fullWidth
               radius="sm"
             >
@@ -171,39 +172,33 @@ const RegisterTutor = () => {
             {/* ESPACIO PARA EL MODAL */}
 
             <p className="text-center mt-4">
-              ¿Ya tienes una cuenta de Tutor?{" "}
-              <RouterLink className="font-semibold text-teal-400" to="/login">
+              ¿Ya tienes una cuenta?{" "}
+              <RouterLink to="/login" className="font-semibold text-purple-500">
                 Inicia sesión
               </RouterLink>
             </p>
+            <RouterLink to="/register-tutor" className="text-purple-500/70 font-bold text-center block">
+              Se un tutor
+            </RouterLink>
 
             <p className="text-center mt-4 text-foreground/50">
               Al registrarte, aceptas nuestros{" "}
-              <NextUILink className="font-semibold text-teal-500" href="#">
+              <NextUILink className="font-semibold" color="secondary" href="#">
                 Términos y condiciones
               </NextUILink>{" "}
               y{" "}
-              <NextUILink className="font-semibold text-teal-500" href="#">
+              <NextUILink className="font-semibold" color="secondary" href="#">
                 Política de privacidad
               </NextUILink>
             </p>
           </form>
         </div>
-        <div className="text-center md:text-left ilustration-register2">
-          <div className="flex p-4 justify-between px-9">
-            <h3 className="text-5xl mt-4 font-bold">EduQuest.com</h3>
-            <Image
-              width={60}
-              alt="NextUI hero Image"
-              src={logo_white}
-            />
-          </div>
-
-          <div className="container flex justify-center">
-            <h1 className=" font-sans text-lg">
-              Si te gusta enseñar y tienes conocimientos en alguna materia,
-              ¡Regístrate como tutor!
-            </h1>
+        <div className="text-center md:text-left ilustration-register">
+          <h3 className="text-5xl p-4 font-bold">EduQuest.com</h3>
+          <div className="flex flex-col justify-center items-center mt-32">
+            <p className=" mt-4">
+              Aprende a tu ritmo, con los mejores tutores de la región.
+            </p>
           </div>
         </div>
       </div>
@@ -211,4 +206,4 @@ const RegisterTutor = () => {
   );
 };
 
-export default RegisterTutor;
+export default Register;
