@@ -1,42 +1,77 @@
 import React from "react";
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Checkbox, Image } from "@nextui-org/react";
 import InputPsw from "../components/common/InputPsw";
 
 import { Link as RouterLink } from "react-router-dom";
-import { Link as NextUILink } from "@nextui-org/react";
+import logo_black from "../assets/images/logo_purple.svg";
+
+import { ArrowRight } from "../icons/Icons";
 
 const Login = () => {
+  document.title = "EduQuest | Iniciar sesión";
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
-        <div className="flex justify-center flex-col items-center light text-foreground py-11 lg:pt-0">
-          <h1 className="text-5xl font-bold mb-3 text-purple-950">
-            Inicia sesión
-          </h1>
-          <p className="text-center text-foreground/50 mb-6">
-            Aprende a tu ritmo
-          </p>
-          <form className="p-6 lg:p-0 lg:w-[55%]" action="">
+        <div className="flex flex-col items-center p-5 lg:mt-36 light text-foreground">
+          <div className="gap-2 pb-11 flex flex-col justify-center items-center">
+            <Image src={logo_black} width={90} />
+            <h1 className="text-2xl font-bold text-purple-600">
+              Bienvenido de nuevo!
+            </h1>
+            <p className="text-sm text-foreground/50">
+              Inicia sesión en tu cuenta de EduQuest.com
+            </p>
+          </div>
+          <form className="lg:w-[40%] " action="">
             <Input
               size="sm"
               label="Correo electrónico"
               type="email"
-              className="mb-4"
+              className="mb-6"
             />
 
             <InputPsw
               size="sm"
               label="Contraseña"
               type="password"
-              className="mb-4"
+              className=" mb-96"
             />
+
+            <div className="my-8 flex justify-between">
+              <Checkbox color="secondary" defaultSelected>
+                {" "}
+                Recuerdame
+              </Checkbox>
+
+              <RouterLink
+                to="/forgot-password"
+                className="text-foreground/50 text-sm hover:text-purple-500"
+              >
+                ¿Olvidaste tu contraseña?
+              </RouterLink>
+            </div>
 
             <Button color="secondary" fullWidth radius="sm">
               Login
+              <ArrowRight className="size-5" />
             </Button>
 
-            <p className="text-center mt-4">
-              ¿No tienes una cuenta? <RouterLink className="text-purple-600"  to="/register-student">Registrate</RouterLink>
+            <p className="text-center mt-4 text-sm text-foreground/50">
+              Al registrarte, aceptas nuestros{" "}
+              <RouterLink className="font-semibold text-purple-500" href="#">
+                Términos y condiciones
+              </RouterLink>{" "}
+              y{" "}
+              <RouterLink className="font-semibold text-purple-500" href="#">
+                Política de privacidad
+              </RouterLink>
+            </p>
+
+            <p className="text-center mt-4 text-sm">
+              ¿No tienes una cuenta?{" "}
+              <RouterLink className="text-purple-600" to="/register-student">
+                Registrate
+              </RouterLink>
             </p>
           </form>
         </div>

@@ -12,6 +12,8 @@ import { useForm, Controller, useWatch } from "react-hook-form";
 import { createTutor } from "../services/user_api";
 import logo_white from "../assets/images/logo_white.svg";
 
+import { useNavigate } from "react-router-dom";
+
 const RegisterTutor = () => {
   const {
     register,
@@ -20,14 +22,16 @@ const RegisterTutor = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const password = useWatch({ name: "password", control });
 
   const onSubmitCustom = handleSubmit((data) => {
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-
+    console.log(data);
     createTutor(data);
-    navigate("/login");
+    navigate("/");
   });
 
   return (
@@ -59,14 +63,14 @@ const RegisterTutor = () => {
                 size="sm"
                 label="Nombre"
                 type="text"
-                {...register("name", { required: true })}
+                {...register("nombre", { required: true })}
               />
               <Input
                 isRequired
                 size="sm"
                 label="Apellido"
                 type="text"
-                {...register("lastname", { required: true })}
+                {...register("apellido", { required: true })}
               />
             </div>
             <Input
@@ -83,14 +87,14 @@ const RegisterTutor = () => {
                 label="Teléfono"
                 type="tel"
                 className="mb-4"
-                {...register("phone", { required: true })}
+                {...register("telefono", { required: true })}
               />
               <Input
                 size="sm"
                 label="Fecha de nacimiento"
                 type="date"
                 className="mb-4"
-                {...register("date", { required: true })}
+                {...register("fecha_nacimiento", { required: true })}
               />
             </div>
 
@@ -120,6 +124,7 @@ const RegisterTutor = () => {
               label="Descripción"
               placeholder="Escribe una breve descripción sobre ti"
               className=" mb-3"
+              
               
             />
 

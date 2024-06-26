@@ -11,6 +11,7 @@ import { Button } from "@nextui-org/react";
 import Footer from "../components/common/Footer";
 
 const Home = () => {
+  document.title = "EduQuest | Inicio - Aprende a tu ritmo!";
   return (
     <>
       <Navbar />
@@ -28,7 +29,7 @@ const Home = () => {
                 Tutorial
               </Button>
 
-              <Link to="register-student/" >
+              <Link to="register-student/">
                 <Button color="danger" size="lg">
                   Empieza ahora
                   <ArrowRight />
