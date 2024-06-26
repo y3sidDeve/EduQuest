@@ -16,7 +16,7 @@ const LoginTutor = () => {
           <div className="gap-2 pb-11 flex flex-col justify-center items-center">
             <Image src={logo_teal} width={90} />
             <h1 className="text-2xl font-bold text-teal-600">
-              Bienvenido de nuevo!
+                Bienvenido de nuevo, Profe
             </h1>
             <p className="text-sm text-foreground/50">
               Inicia sesión en tu cuenta de EduQuest.com
@@ -73,10 +73,10 @@ const LoginTutor = () => {
             </p>
 
             <p className="text-center mt-4 text-sm">
-              ¿No tienes una cuenta?{" "}
+              ¿No tienes una cuenta de Tutor?{" "}
               <RouterLink
                 className="text-teal-500 font-semibold"
-                to="/register-student"
+                to="/register-tutor"
               >
                 Registrate
               </RouterLink>

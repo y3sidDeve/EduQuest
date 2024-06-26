@@ -175,7 +175,7 @@ const RegisterTutor = () => {
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta de Tutor?{" "}
-              <RouterLink className="font-semibold text-teal-500" to="/login">
+              <RouterLink className="font-semibold text-teal-500" to="/login-tutor">
                 Inicia sesión
               </RouterLink>
             </p>
