@@ -12,17 +12,6 @@
     rgba(121, 34, 216, 1) 39%,
     rgba(54, 54, 178, 1) 100%
   );
-  border-radius: 0 0 50% 50%;
-}
-
-.contenedor-home {
-  background: rgb(123, 17, 249);
-  background: linear-gradient(
-    180deg,
-    rgba(123, 17, 249, 1) 0%,
-    rgba(121, 34, 216, 1) 39%,
-    rgba(54, 54, 178, 1) 100%
-  );
   border-radius: 0 0 150px 150px;
 }
 
@@ -105,4 +94,31 @@
   background-size: cover;
   filter: brightness(0.5);
   z-index: -1;
+}
+
+
+
+/* ELEMENTOS DE LA SIDEBAR */
+
+.css-dip3t8 {
+  all: unset;
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 3;
+}
+
+/* ORIGINALES */
+/* position: relative; */
+/* height: 100%; */
+/* overflow-y: auto; */
+/* overflow-x: hidden; */
+/* z-index: 3; */
+/* background-color: rgb(249, 249, 249, 0.7); */
+
+/* MenuItemsSb*/
+.css-1t8x7v1 >.ps-menu-button:hover {
+  color: #981bff;
+  border-right: #6b12cf 3px solid;
 }

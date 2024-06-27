@@ -10,8 +10,8 @@ export const createStudent = async (user) => {
   try {
     const response = await userApi.post("/register/estudiante", user);
     return response.data;
-  } catch (error) {
-    console.error(error);
+  } catch (error) { // si hay un error, lo mostramos en consola
+    console.error("Error al crear");
   }
 };
 

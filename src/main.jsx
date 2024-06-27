@@ -10,7 +10,7 @@ import  Routes  from "./routes/Routes";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <NextUIProvider>
-      <main>
+      <main className="light">
         <RouterProvider router={Routes} />
       </main>
     </NextUIProvider>
