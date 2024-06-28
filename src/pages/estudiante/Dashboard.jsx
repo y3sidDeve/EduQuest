@@ -4,12 +4,11 @@ const Dashboard = () => {
   document.title = "EduQuest | Estudent Dashboard";
   return (
     <>
-      <div className="flex">
-        <SidebarCustom className="dark:bg-gray-800 dark:text-white bg-background text-black" />
-        <div className=" w-[90vw] ">
-          <div className=" dark:bg-gray-800 dark:text-white bg-gray-200 text-black">
-            ...
-            <div>Text color changes based on theme</div>
+      <div className="flex h-[100vh]">
+        <SidebarCustom className=" dark:bg-gray-900 dark:text-white bg-[#EEEEEE] text-black " />
+        <div className="w-[100%] bg-gray-200">
+          <div className="navbar border-4 rounded border-green-600">
+            <h1>Dashboard</h1>
           </div>
         </div>
       </div>
