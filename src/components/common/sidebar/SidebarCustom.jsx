@@ -1,10 +1,12 @@
 import React from "react";
-import { Sidebar, MenuItem, Menu, SubMenu } from "react-pro-sidebar";
+import { Sidebar, Menu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
-import { Avatar } from "@nextui-org/react";
+import { Avatar, Switch } from "@nextui-org/react";
 import MenuItemSb from "./MenuItemSb";
 import SubMenuSb from "./SubMenuSb";
+
+import ThemeSwitch from "../ThemeSwitch";
 
 import {
   DashboardIcon,
@@ -12,19 +14,36 @@ import {
   TaskIcon,
   ClipIcon,
   MessageIcon,
+  ExitIcon,
+  SunIcon,
+  MoonIcon,
 } from "../../../icons/Icons";
 
-function SidebarCustom({ backgroundColor, props, className }) {
+function SidebarCustom({ backgroundColor, props, className, collapsed }) {
   return (
-    <Sidebar {...props} className={className} collapsed={false} toggled={true}>
+    <Sidebar
+      {...props}
+      collapsed={collapsed}
+      className={className}
+      toggled={true}
+    >
       <div className="flex flex-col h-[100%] ">
         <Menu>
-          <MenuItem className="py-6" icon={<Avatar name="JS" />}>
+          <MenuItemSb
+            className="py-3 hover:bg-gray-200 "
+            icon={
+              <Avatar
+                src={"https://i.pravatar.cc/150?u=a04258a2462d826712d"}
+                name="JS"
+                size="sm"
+              />
+            }
+          >
             <div className="px-4">
               <p className=" text-xs">Estudiante</p>
               <h3 className="text-sm font-semibold">Andrew Smith</h3>
             </div>
-          </MenuItem>
+          </MenuItemSb>
         </Menu>
 
         <hr />
@@ -44,11 +63,11 @@ function SidebarCustom({ backgroundColor, props, className }) {
               icon={<TaskIcon />}
               label="Entregas"
             >
-              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition  hover:text-purple-500">
+              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition  hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Tareas{" "}
               </MenuItemSb>
-              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition  hover:text-purple-500">
+              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Proyectos{" "}
               </MenuItemSb>
@@ -90,8 +109,11 @@ function SidebarCustom({ backgroundColor, props, className }) {
 
         <div className="flex  items-end pb-4">
           <Menu className="w-[100%] ">
+            <MenuItemSb icon={<SunIcon />} >
+              <ThemeSwitch />
+            </MenuItemSb>
             <MenuItemSb
-              icon={<DashboardIcon />}
+              icon={<ExitIcon />}
               component={<Link to="dashboard" />}
               className="text-foreground/60 hover:dark:bg-gray-700 transition hover:bg-gray-100 text-red-500 hover:text-red-400"
             >
