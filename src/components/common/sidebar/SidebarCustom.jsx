@@ -2,7 +2,7 @@ import React from "react";
 import { Sidebar, Menu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 
-import { Avatar, Switch } from "@nextui-org/react";
+import { Avatar, Chip } from "@nextui-org/react";
 import MenuItemSb from "./MenuItemSb";
 import SubMenuSb from "./SubMenuSb";
 
@@ -15,22 +15,22 @@ import {
   ClipIcon,
   MessageIcon,
   ExitIcon,
-  SunIcon,
-  MoonIcon,
 } from "../../../icons/Icons";
 
-function SidebarCustom({ backgroundColor, props, className, collapsed }) {
+function SidebarCustom({
+  backgroundColor,
+  props,
+  className,
+  collapsed,
+  onToggleTheme,
+  prevTheme,
+}) {
   return (
-    <Sidebar
-      {...props}
-      collapsed={collapsed}
-      className={className}
-      toggled={true}
-    >
-      <div className="flex flex-col h-[100%] ">
+    <Sidebar {...props} collapsed={collapsed} className={className}>
+      <div className="flex flex-col h-[100%]">
         <Menu>
           <MenuItemSb
-            className="py-3 hover:bg-gray-200 "
+            className="py-3 hover:bg-gray-200 hover:dark:bg-gray-800/50 transition   hover:dark:border-0 hover:text-purple-500"
             icon={
               <Avatar
                 src={"https://i.pravatar.cc/150?u=a04258a2462d826712d"}
@@ -46,28 +46,45 @@ function SidebarCustom({ backgroundColor, props, className, collapsed }) {
           </MenuItemSb>
         </Menu>
 
-        <hr />
+        <div className=" flex justify-center mb-6">
+          <hr className="w-[60%] bg-foreground/60 dark:bg-indigo-500 rounded-2xl border-0 h-0.5" />
+        </div>
 
-        <div className="flex-1 pb-32">
+        <div className="flex-1 pb-32 w-[auto] ">
           <Menu>
+            {/* <div className="title-group px-7 font-semibold">
+              <p className="text-foreground/60 text-[0.6rem]">MAIN</p>
+            </div> */}
+            <div
+              className={`title-group px-7 font-semibold ${
+                collapsed && "hidden"
+              } `}
+            >
+              <p className="text-foreground/60 text-[0.6rem]">MAIN</p>
+            </div>
             <MenuItemSb
+              suffix={
+                <Chip size="sm" radius="full" color="secondary" variant="flat">
+                  New
+                </Chip>
+              }
               icon={<DashboardIcon />}
               component={<Link to="dashboard" />}
-              className="text-foreground/70  hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200 hover:font-semibold  hover:dark:border-0 hover:text-purple-500"
+              className="text-foreground/70  hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-800"
             >
               Dashboard
             </MenuItemSb>
 
             <SubMenuSb
-              className="text-foreground/60 hover:dark:bg-gray-800/50 hover:dark:text-white transition  hover:bg-gray-200 hover:font-semibold   hover:text-purple-500"
+              className="text-foreground/60 hover:dark:bg-gray-800/50 hover:dark:text-white transition  hover:bg-gray-200    hover:text-purple-500"
               icon={<TaskIcon />}
               label="Entregas"
             >
-              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition  hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
+              <MenuItemSb className="dark:bg-slate-800  hover:dark:text-white hover:dark:bg-slate-900/90 transition  hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Tareas{" "}
               </MenuItemSb>
-              <MenuItemSb className="dark:bg-background hover:dark:border-0  hover:dark:text-white hover:dark:bg-gray-800 transition hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
+              <MenuItemSb className="dark:bg-slate-800  hover:dark:border-0  hover:dark:text-white hover:dark:bg-slate-900/90 transition hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Proyectos{" "}
               </MenuItemSb>
@@ -76,7 +93,7 @@ function SidebarCustom({ backgroundColor, props, className, collapsed }) {
             <MenuItemSb
               icon={<BookIcon />}
               component={<Link to="dashboard" />}
-              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200 hover:font-semibold  hover:dark:border-0 hover:text-purple-500"
+              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Mis clases
             </MenuItemSb>
@@ -84,38 +101,39 @@ function SidebarCustom({ backgroundColor, props, className, collapsed }) {
             <MenuItemSb
               icon={<ClipIcon />}
               component={<Link to="dashboard" />}
-              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200 hover:font-semibold  hover:dark:border-0 hover:text-purple-500"
+              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Material
             </MenuItemSb>
 
             <MenuItemSb
+              suffix={
+                <Chip size="sm" radius="full" color="danger" variant="solid">
+                  10
+                </Chip>
+              }
               icon={<MessageIcon />}
               component={<Link to="dashboard" />}
-              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200 hover:font-semibold  hover:dark:border-0 hover:text-purple-500"
+              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Mensajes
-            </MenuItemSb>
-
-            <MenuItemSb
-              icon={<DashboardIcon />}
-              component={<Link to="dashboard" />}
-              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200 hover:font-semibold  hover:dark:border-0 hover:text-purple-500"
-            >
-              Entregas
             </MenuItemSb>
           </Menu>
         </div>
 
         <div className="flex  items-end pb-4">
           <Menu className="w-[100%] ">
-            <MenuItemSb icon={<SunIcon />} >
-              <ThemeSwitch />
+            <MenuItemSb
+              icon={<ThemeSwitch color="warning" onClick={onToggleTheme} />}
+            >
+              <p className="text-gray-400 font-semibold text-sm">
+                {prevTheme === "light" ? "Dark Mode" : "Light Mode"}
+              </p>
             </MenuItemSb>
             <MenuItemSb
               icon={<ExitIcon />}
-              component={<Link to="dashboard" />}
-              className="text-foreground/60 hover:dark:bg-gray-700 transition hover:bg-gray-100 text-red-500 hover:text-red-400"
+              component={<Link to="/dashboard" />}
+              className="text-pink-500 font-semibold transition hover:bg-gray-200  hover:text-fuchsia-500 dark:text-pink-800 hover:dark:text-pink-600  hover:dark:bg-slate-800/70"
             >
               Cerrar sesión
             </MenuItemSb>

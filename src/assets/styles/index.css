@@ -96,8 +96,6 @@
   z-index: -1;
 }
 
-
-
 /* ELEMENTOS DE LA SIDEBAR */
 
 .css-dip3t8 {
@@ -122,3 +120,6 @@
   color: #981bff;
   border-right: #6b12cf 3px solid;
 } */
+.css-1wvake5 {
+  border: none !important;
+}

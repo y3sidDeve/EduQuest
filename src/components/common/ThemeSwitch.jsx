@@ -13,7 +13,7 @@ const ThemeSwitch = (props) => {
   } = useSwitch(props);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex  flex-col gap-2">
       <Component {...getBaseProps()}>
           <VisuallyHidden>
             <input {...getInputProps()} />
@@ -24,14 +24,14 @@ const ThemeSwitch = (props) => {
               class: [
                 "w-8 h-8",
                 "flex items-center justify-center",
-                "rounded-lg bg-default-100 hover:bg-default-200",
+                "rounded-lg bg-indigo-700 text-white hover:bg-indigo-600",
+               
               ],
             })}
           >
-            {isSelected ? <SunIcon/> : <MoonIcon/>}
+            {isSelected ? <SunIcon className="dark:text-white " /> : <MoonIcon/>}
           </div>
       </Component>
-      
     </div>
   )
 }
