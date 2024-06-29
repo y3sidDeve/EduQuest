@@ -15,6 +15,7 @@ import {
   ClipIcon,
   MessageIcon,
   ExitIcon,
+  AvatarImage,
 } from "../../../icons/Icons";
 
 function SidebarCustom({
@@ -70,7 +71,7 @@ function SidebarCustom({
                 </Chip>
               }
               icon={<DashboardIcon />}
-              component={<Link to="dashboard" />}
+              component={<Link to="/dashboard" />}
               className="text-foreground/70  hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-800"
             >
               Dashboard
@@ -93,12 +94,12 @@ function SidebarCustom({
 
             <MenuItemSb
               icon={<BookIcon />}
-              component={<Link to="dashboard" />}
+              component={<Link to="/login" />}
               className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Mis clases
             </MenuItemSb>
-
+            
             <MenuItemSb
               icon={<ClipIcon />}
               component={<Link to="dashboard" />}

@@ -24,16 +24,18 @@ const Dashboard = () => {
           className=" dark:bg-gray-900 transition-all dark:shadow-danger-900 dark:text-white bg-[#EEEEEE] text-black"
         />
         <div className="w-[100%] bg-[#E0E0E0]  dark:bg-slate-800">
-          <div className="navbar flex gap-6 py-2 border-2 border-green-500 my-2 mx-4 ">
-            <Button
-              size="sm"
-              isIconOnly
-              className="dark:bg-slate-600"
-              aria-label="Like"
-              onClick={() => setCollapsed(!collapsed)}
-            >
-              <BarIcon className="size-5" />
-            </Button>
+          <div className="navbar flex gap-6 py-2  my-2 mx-4">
+            <div>
+              <Button
+                size="sm"
+                isIconOnly
+                className="dark:bg-slate-600"
+                aria-label="Like"
+                onClick={() => setCollapsed(!collapsed)}
+              >
+                <BarIcon className="size-5" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
