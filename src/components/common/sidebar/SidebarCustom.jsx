@@ -22,11 +22,12 @@ function SidebarCustom({
   props,
   className,
   collapsed,
+  toggled,
   onToggleTheme,
   prevTheme,
 }) {
   return (
-    <Sidebar {...props} collapsed={collapsed} className={className}>
+    <Sidebar {...props}  toggled={toggled} collapsed={collapsed} className={className}>
       <div className="flex flex-col h-[100%]">
         <Menu>
           <MenuItemSb
@@ -80,11 +81,11 @@ function SidebarCustom({
               icon={<TaskIcon />}
               label="Entregas"
             >
-              <MenuItemSb className="dark:bg-slate-800  hover:dark:text-white hover:dark:bg-slate-900/90 transition  hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
+              <MenuItemSb className="dark:bg-gray-800  hover:dark:text-white hover:dark:bg-slate-900/90 transition  hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Tareas{" "}
               </MenuItemSb>
-              <MenuItemSb className="dark:bg-slate-800  hover:dark:border-0  hover:dark:text-white hover:dark:bg-slate-900/90 transition hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
+              <MenuItemSb className="dark:bg-gray-800  hover:dark:border-0  hover:dark:text-white hover:dark:bg-slate-900/90 transition hover:text-purple-500 bg-gray-200 hover:bg-gray-300">
                 {" "}
                 Proyectos{" "}
               </MenuItemSb>
@@ -108,7 +109,7 @@ function SidebarCustom({
 
             <MenuItemSb
               suffix={
-                <Chip size="sm" radius="full" color="danger" variant="solid">
+                <Chip size="sm" radius="full" color="danger" variant="shadow">
                   10
                 </Chip>
               }

@@ -17,13 +17,14 @@ const Dashboard = () => {
     <>
       <div className={`flex h-[100vh] ${theme}`}>
         <SidebarCustom
+          toggled={true}
           prevTheme={theme}
           onToggleTheme={toggleTheme}
           collapsed={collapsed}
           className=" dark:bg-gray-900 transition-all dark:shadow-danger-900 dark:text-white bg-[#EEEEEE] text-black"
         />
         <div className="w-[100%] bg-[#E0E0E0]  dark:bg-slate-800">
-          <div className="navbar flex gap-6 py-2 my-2 mx-4 ">
+          <div className="navbar flex gap-6 py-2 border-2 border-green-500 my-2 mx-4 ">
             <Button
               size="sm"
               isIconOnly
