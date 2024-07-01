@@ -1,7 +1,17 @@
 import React from "react";
 import { MenuItem } from "react-pro-sidebar";
 
-function MenuItemSb({ props, component, children, className, icon, prefix, suffix, ...rest}) {
+function MenuItemSb({
+  props,
+  component,
+  active,
+  children,
+  className,
+  icon,
+  prefix,
+  suffix,
+  disabled,
+}) {
   return (
     <MenuItem
       style={{
@@ -12,7 +22,7 @@ function MenuItemSb({ props, component, children, className, icon, prefix, suffi
       suffix={suffix}
       icon={icon}
       {...props}
-      className={className + " text-foreground/60 "}
+      className={className + `${active==true ? " active" : ""}`}
     >
       {children}
     </MenuItem>

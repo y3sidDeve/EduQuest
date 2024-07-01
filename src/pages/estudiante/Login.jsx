@@ -1,14 +1,47 @@
+/**
+ * Login component for the EduQuest application.
+ * Allows users to log in to their accounts.
+ */
 import React from "react";
 import { Input, Button, Checkbox, Image } from "@nextui-org/react";
 import InputPsw from "../../components/common/InputPsw";
-
 import { Link as RouterLink } from "react-router-dom";
 import logo_black from "../../assets/images/logo_purple.svg";
-
 import { ArrowRight } from "../../icons/Icons";
+
+// importamos la función login de user_api
+import { loginStudent } from "../../services/user_api";
+
+// importaciones de react-router-dom
+import { useNavigate } from "react-router-dom";
+
+// importaciones de react-hook-form
+import { useForm, Controller } from "react-hook-form";
 
 const Login = () => {
   document.title = "EduQuest | Iniciar sesión";
+
+  const { register, handleSubmit } = useForm();
+
+  // creamos la constante navigate para poder redirigir al usuario a otra página
+  const navigate = useNavigate();
+
+  const [response, setResponse] = React.useState(null);
+  const [error, setError] = React.useState(null);
+
+  // función para manejar el submit del formulario
+  const onSubmitCustom = handleSubmit(async (data) => {
+    try {
+      // llamamos a la función loginStudent y le pasamos los datos del formulario
+      const responseData = await loginStudent(data);
+      setResponse(responseData);
+      console.log(responseData);
+      
+    } catch (error) {
+      setError(error.response.data.mensaje);
+    }
+  });
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:h-[100vh] dark text-foreground">
@@ -22,12 +55,13 @@ const Login = () => {
               Inicia sesión en tu cuenta de EduQuest.com
             </p>
           </div>
-          <form className="lg:w-[40%] " action="">
+          <form onSubmit={onSubmitCustom} className="lg:w-[40%] " action="">
             <Input
               size="sm"
               label="Correo electrónico"
               type="email"
               className="mb-6"
+              {...register("email")}
             />
 
             <InputPsw
@@ -35,8 +69,12 @@ const Login = () => {
               label="Contraseña"
               type="password"
               className=" mb-96"
+              {...register("password")}
             />
-
+            {
+              // si hay un error en la autenticación, se muestra el mensaje de error
+              error && <p className="text-red-500 text-sm">{error}</p>
+            }
             <div className="my-8 flex justify-between">
               <Checkbox color="secondary" defaultSelected>
                 {" "}
@@ -51,7 +89,7 @@ const Login = () => {
               </RouterLink>
             </div>
 
-            <Button color="secondary" fullWidth radius="sm">
+            <Button color="secondary" fullWidth type="submit" radius="sm">
               Login
               <ArrowRight className="size-5" />
             </Button>

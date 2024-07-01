@@ -1,6 +1,7 @@
 import React from "react";
 import { Sidebar, Menu } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+
+import { Link, useLocation } from "react-router-dom";
 
 import { Avatar, Chip } from "@nextui-org/react";
 import MenuItemSb from "./MenuItemSb";
@@ -27,8 +28,14 @@ function SidebarCustom({
   onToggleTheme,
   prevTheme,
 }) {
+  const location = useLocation();
   return (
-    <Sidebar {...props}  toggled={toggled} collapsed={collapsed} className={className}>
+    <Sidebar
+      {...props}
+      toggled={toggled}
+      collapsed={collapsed}
+      className={className}
+    >
       <div className="flex flex-col h-[100%]">
         <Menu>
           <MenuItemSb
@@ -54,9 +61,6 @@ function SidebarCustom({
 
         <div className="flex-1 pb-32 w-[auto] ">
           <Menu>
-            {/* <div className="title-group px-7 font-semibold">
-              <p className="text-foreground/60 text-[0.6rem]">MAIN</p>
-            </div> */}
             <div
               className={`title-group px-7 font-semibold ${
                 collapsed && "hidden"
@@ -70,9 +74,10 @@ function SidebarCustom({
                   New
                 </Chip>
               }
+              active={location.pathname === "/dashboard/info"}
               icon={<DashboardIcon />}
-              component={<Link to="/dashboard" />}
-              className="text-foreground/70  hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-800"
+              component={<Link to="/dashboard/info" />}
+              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Dashboard
             </MenuItemSb>
@@ -99,7 +104,7 @@ function SidebarCustom({
             >
               Mis clases
             </MenuItemSb>
-            
+
             <MenuItemSb
               icon={<ClipIcon />}
               component={<Link to="dashboard" />}
@@ -115,7 +120,7 @@ function SidebarCustom({
                 </Chip>
               }
               icon={<MessageIcon />}
-              component={<Link to="dashboard" />}
+              component={<Link to="mensajes/" />}
               className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Mensajes
@@ -134,7 +139,7 @@ function SidebarCustom({
             </MenuItemSb>
             <MenuItemSb
               icon={<ExitIcon />}
-              component={<Link to="/dashboard" />}
+              component={<Link to="/" />}
               className="text-pink-500 font-semibold transition hover:bg-gray-200  hover:text-fuchsia-500 dark:text-pink-800 hover:dark:text-pink-600  hover:dark:bg-slate-800/70"
             >
               Cerrar sesión

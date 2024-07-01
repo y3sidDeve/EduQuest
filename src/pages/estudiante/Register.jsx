@@ -12,6 +12,7 @@ import { Link as NextUILink } from "@nextui-org/react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 
 const Register = () => {
+  document.title = "EduQuest | Registro";
   const {
     register,
     handleSubmit,
@@ -20,17 +21,22 @@ const Register = () => {
   } = useForm();
 
   const navigate = useNavigate();
-
   const [response, setResponse] = React.useState(null);
+  const [error, setError] = React.useState(null);
 
   const password = useWatch({ name: "password", control });
 
-  const onSubmitCustom = handleSubmit((data) => {
+  const onSubmitCustom = handleSubmit(async (data) => {
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-    
-    createStudent(data)
+
+    try {
+      const responseData = await createStudent(data);
+      setResponse(responseData);
       navigate("/login");
+    } catch (error) {
+      setError(error.response.data.Mensaje);
+    }
   });
 
   return (
@@ -83,12 +89,6 @@ const Register = () => {
               className="mb-4"
               {...register("email", { required: true })}
             />
-
-            {response && (
-              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
-                {response.Mensaje}
-              </span>
-            )}
             <div className="flex w-full gap-4 flex-wrap md:flex-nowrap mb-4">
               <Input
                 size="sm"
@@ -159,6 +159,12 @@ const Register = () => {
               )
             )}
 
+            {error && (
+              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                {error}
+              </span>
+            )}
+
             <Button
               className="mt-1"
               type="submit"
@@ -177,7 +183,10 @@ const Register = () => {
                 Inicia sesión
               </RouterLink>
             </p>
-            <RouterLink to="/register-tutor" className="text-purple-500/70 font-bold text-center block">
+            <RouterLink
+              to="/register-tutor"
+              className="text-purple-500/70 font-bold text-center block"
+            >
               Se un tutor
             </RouterLink>
 

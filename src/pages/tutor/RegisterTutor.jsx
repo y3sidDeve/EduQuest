@@ -16,7 +16,6 @@ import logo_white from "../../assets/images/logo_white.svg";
 import { useNavigate } from "react-router-dom";
 
 const RegisterTutor = () => {
-
   document.title = "EduQuest | Regístrate como tutor";
   const {
     register,
@@ -29,12 +28,20 @@ const RegisterTutor = () => {
 
   const password = useWatch({ name: "password", control });
 
-  const onSubmitCustom = handleSubmit((data) => {
+  const [response, setResponse] = React.useState(null);
+  const [error, setError] = React.useState(null);
+
+  const onSubmitCustom = handleSubmit(async (data) => {
     delete data.passwordConfirm;
     data.rol = parseInt(data.rol);
-    console.log(data);
-    createTutor(data);
-    navigate("/");
+
+    try {
+      const responseData = await createTutor(data);
+      setResponse(responseData);
+      navigate("/login-tutor");
+    } catch (error) {
+      setError(error.response.data.Mensaje);
+    }
   });
 
   return (
@@ -127,8 +134,6 @@ const RegisterTutor = () => {
               label="Descripción"
               placeholder="Escribe una breve descripción sobre ti"
               className=" mb-3"
-              
-              
             />
 
             <InputPsw
@@ -162,6 +167,12 @@ const RegisterTutor = () => {
               )
             )}
 
+            {error && (
+              <span className="text-red-500 text-sm bg-red-100 inline rounded-md p-0.5 my-1">
+                {error}
+              </span>
+            )}
+
             <Button
               className="mt-1 bg-teal-600 text-white"
               type="submit"
@@ -175,7 +186,10 @@ const RegisterTutor = () => {
 
             <p className="text-center mt-4">
               ¿Ya tienes una cuenta de Tutor?{" "}
-              <RouterLink className="font-semibold text-teal-500" to="/login-tutor">
+              <RouterLink
+                className="font-semibold text-teal-500"
+                to="/login-tutor"
+              >
                 Inicia sesión
               </RouterLink>
             </p>
@@ -195,11 +209,7 @@ const RegisterTutor = () => {
         <div className="text-center md:text-left ilustration-register2">
           <div className="flex p-4 justify-between px-9">
             <h3 className="text-5xl mt-4 font-bold">EduQuest.com</h3>
-            <Image
-              width={60}
-              alt="NextUI hero Image"
-              src={logo_white}
-            />
+            <Image width={60} alt="NextUI hero Image" src={logo_white} />
           </div>
 
           <div className="container flex justify-center">
