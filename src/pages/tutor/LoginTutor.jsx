@@ -1,4 +1,3 @@
-import React from "react";
 import { Input, Button, Checkbox, Image } from "@nextui-org/react";
 import InputPsw from "../../components/common/InputPsw";
 

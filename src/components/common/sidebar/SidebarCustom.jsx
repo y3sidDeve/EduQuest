@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar, Menu } from "react-pro-sidebar";
 
 import { Link, useLocation } from "react-router-dom";
@@ -29,6 +29,10 @@ function SidebarCustom({
   prevTheme,
 }) {
   const location = useLocation();
+
+  
+  
+
   return (
     <Sidebar
       {...props}
@@ -62,9 +66,8 @@ function SidebarCustom({
         <div className="flex-1 pb-32 w-[auto] ">
           <Menu>
             <div
-              className={`title-group px-7 font-semibold ${
-                collapsed && "hidden"
-              } `}
+              className={`title-group px-7 font-semibold ${collapsed && "hidden"
+                } `}
             >
               <p className="text-foreground/60 text-[0.6rem]">MAIN</p>
             </div>
@@ -74,13 +77,28 @@ function SidebarCustom({
                   New
                 </Chip>
               }
-              active={location.pathname === "/dashboard/info"}
+              active={location.pathname === "/dashboard-student/info"}
               icon={<DashboardIcon />}
-              component={<Link to="/dashboard/info" />}
+              component={<Link to="/dashboard-student/info" />}
               className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
             >
               Dashboard
             </MenuItemSb>
+
+            <MenuItemSb
+              suffix={
+                <Chip size="sm" radius="full" color="secondary" variant="flat">
+                  New
+                </Chip>
+              }
+              active={location.pathname === "/dashboard-student/search-tutores"}
+              icon={<DashboardIcon />}
+              component={<Link to="/dashboard-student/info" />}
+              className="text-foreground/60 hover:dark:text-white hover:dark:bg-gray-800/50 transition hover:bg-gray-200   hover:dark:border-0 hover:text-purple-500"
+            >
+              Buscar Tutores
+            </MenuItemSb>
+
 
             <SubMenuSb
               className="text-foreground/60 hover:dark:bg-gray-800/50 hover:dark:text-white transition  hover:bg-gray-200    hover:text-purple-500"

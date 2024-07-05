@@ -5,6 +5,8 @@ import Login from "../pages/estudiante/Login";
 import RegisterTutor from "../pages/tutor/RegisterTutor";
 import LoginTutor from "../pages/tutor/LoginTutor";
 import Dashboard from "../pages/estudiante/Dashboard";
+import DashboardTutor from '../pages/tutor/DashboardTutor'
+import CardsTutor from '../components/specific/CardsTutor'
 
 const routes = createBrowserRouter([
   {
@@ -29,7 +31,7 @@ const routes = createBrowserRouter([
     element: <LoginTutor />,
   },
 
-  
+
   {
     path: "/dashboard-student",
     element: <Dashboard />,
@@ -39,9 +41,19 @@ const routes = createBrowserRouter([
         element: <div>info </div>,
       },
       {
-      path: "student/",
-      element: <div>hola</div>,
-    }]
+        path: "student/",
+        element: <div>hola</div>,
+      },
+      {
+        path:'search-tutores/',
+        element: <CardsTutor/>
+      }
+    ]
+  },
+  {
+
+    path: "/dasboard-tutor",
+    element: <DashboardTutor />
   }
 ]);
 

@@ -1,12 +1,12 @@
 import SidebarCustom from "../../components/common/sidebar/SidebarCustom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@nextui-org/react";
 import { Outlet } from "react-router-dom";
 
 import { BarIcon } from "../../icons/Icons";
 
-const Dashboard = () => {
-  document.title = "EduQuest | Estudent Dashboard";
+const DashBoardTutor = () => {
+  document.title = "EduQuest | Tutor Dashboard";
   const [collapsed, setCollapsed] = useState(false);
   const [theme, setTheme] = useState("light");
 
@@ -38,7 +38,6 @@ const Dashboard = () => {
           </div>
           <main>
             <div className="container mx-auto">
-              <h1>Hola</h1>
               <Outlet />
             </div>
           </main>
@@ -48,4 +47,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashBoardTutor;
