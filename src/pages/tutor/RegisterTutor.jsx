@@ -36,6 +36,9 @@ const RegisterTutor = () => {
     data.rol = 2
 
     try {
+
+      console.log(data)
+
       const responseData = await createTutor(data);
       setResponse(responseData);
       navigate("/login-tutor");
