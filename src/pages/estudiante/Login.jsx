@@ -32,11 +32,35 @@ const Login = () => {
   // función para manejar el submit del formulario
   const onSubmitCustom = handleSubmit(async (data) => {
     try {
+
+
       // llamamos a la función loginStudent y le pasamos los datos del formulario
-      const responseData = await loginStudent(data);
-      setResponse(responseData);
-      console.log(responseData);
-      
+      loginStudent(data)
+        .then((data) => {
+
+          console.log(data.data)
+          localStorage.setItem("id_usuario", data.data.token.id_usuario)
+          localStorage.setItem("id_rol", data.data.token.rol.id)
+          localStorage.setItem("token_auth", data.data.token.jwt)
+
+
+          switch (data.data.token.rol.id) {
+            case 2:
+
+              navigate('/dashboard-student')
+              break;
+
+            case 3:
+              navigate('/dashboard-student')
+          }
+
+          setResponse(data.data)
+        })
+        .catch((error) => {
+          console.log(error)
+          // Aqui debe ir una alerta para el usuario de que las credenciales son invalidas
+        })
+
     } catch (error) {
       setError(error.response.data.mensaje);
     }

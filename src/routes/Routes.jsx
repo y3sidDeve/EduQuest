@@ -28,8 +28,10 @@ const routes = createBrowserRouter([
     path: "/login-tutor",
     element: <LoginTutor />,
   },
+
+  
   {
-    path: "/dashboard",
+    path: "/dashboard-student",
     element: <Dashboard />,
     children: [
       {

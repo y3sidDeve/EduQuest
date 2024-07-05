@@ -17,14 +17,11 @@ export const createStudent = async (user) => {
 };
 
 // Login de usuario
-export const loginStudent = async (user) => {
-  try {
-    const response = await userApi.post("auth/", user);
-    return response.data;
-  } catch (error) {
-    console.error("Error al hacer login", error);
-    throw error;
-  }
+export const loginStudent =  (user) => {
+
+
+  return userApi.post("auth/", user)
+  
 };
 
 
