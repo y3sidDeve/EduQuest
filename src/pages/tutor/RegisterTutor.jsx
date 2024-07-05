@@ -33,7 +33,7 @@ const RegisterTutor = () => {
 
   const onSubmitCustom = handleSubmit(async (data) => {
     delete data.passwordConfirm;
-    data.rol = parseInt(data.rol);
+    data.rol = 2
 
     try {
       const responseData = await createTutor(data);

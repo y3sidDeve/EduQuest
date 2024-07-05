@@ -28,7 +28,7 @@ const Register = () => {
 
   const onSubmitCustom = handleSubmit(async (data) => {
     delete data.passwordConfirm;
-    data.rol = parseInt(data.rol);
+    data.rol = 3;
 
     try {
       const responseData = await createStudent(data);
